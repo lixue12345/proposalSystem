@@ -1,0 +1,36 @@
+﻿@model ProposalSystem.Models.FeedBack
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>FeedBack</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Result1.Register)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Result1.Register)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProposerOpinion)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProposerOpinion)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Date)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,148 @@
+﻿@model ProposalSystem.Models.Proposal
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Index</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+        <style type="text/css">
+            body {
+                padding: 20px;
+            }
+            form {
+            border:solid 1px;
+        }
+        </style>
+        <script>
+            $(document).ready(function () {
+                $("#write").click(function () {
+                    $("#center").load("Form");
+                });
+                $("#done").click(function () {
+                    $("#center").load("Done");
+                });
+                $("#submitted").click(function () {
+                    $("#center").load("Submitted");
+                });
+            });
+        </script>
+
+    </head>
+    
+
+    <body>
+        
+        <div class="container">
+            <div>
+                <img src="~/Images/logo3.jpg" />
+            </div>
+            
+            <div class="row">
+                <div class="col-md-12">
+                    
+                </div>
+            </div>
+            
+            <div style="padding-top: 5px">
+                <div class="col-md-3">
+                    <div class="list-group">
+                        <!--激活，作为标题-->
+                        <a href="#" class="list-group-item active ">
+                            系统菜单
+                        </a>
+                        <a href="#" id="write" class="list-group-item">写提案</a>
+                        <a href="#" id="done" class="list-group-item">已提交的提案</a>
+                        <a href="#" id="submitted" class="list-group-item">已处理的提案</a>
+                        <a href="http://localhost:1700" class="list-group-item">退出登录</a>
+                    </div>
+                </div>
+            
+                <div class="col-md-9">
+                    <div>
+                        <ol class="breadcrumb">
+                            <li><span class="glyphicon glyphicon-home"></span>&nbsp;
+                                <a href="/Teacher/Index">主页</a>
+                            </li>
+                            <li class="active"></li>
+                        </ol>
+                    </div>
+                    <div id="center">
+                       <h3 class="text-center">提案详情</h3>
+
+                    <form class="form-horizontal" role="form" name="myform" action="/Administrator/Submit" method="post">
+                        <div class="form-group" style="padding-top: 20px">
+                            <label for="title" class="col-sm-2 control-label">标题</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="title" 
+                        value="@Html.DisplayFor(model => model.Title)" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="content" class="col-sm-2 control-label">内容</label>
+                            <div class="col-sm-10">
+                                <textarea rows="10" cols="30" class="form-control" name="content" disabled>@Html.DisplayFor(model => model.Content)</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="type" class="col-sm-2 control-label">类型</label>
+
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="type" 
+                        value="@Html.DisplayFor(model => model.ProposalType.Type)" disabled>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mainproposer" class="col-sm-2 control-label">主提案人</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="mainproposer"
+                         value="@Html.DisplayFor(model => model.User.UserName)" disabled>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="co-sponsor" class="col-sm-2 control-label">联名提案人</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="co-sponsor"
+                         value="@Html.DisplayFor(model => model.Co_Proposers)" disabled>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="processingdepartment" class="col-sm-2 control-label">拟处理部门</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="processingdepartment"
+                         value="@Html.DisplayFor(model => model.Department.Name)" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="date" class="col-sm-2 control-label">提交时间</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="date"
+                         value="@Html.DisplayFor(model => model.Date)" disabled>
+                            </div>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="text-center" style="padding-top: 200px">
+                        Copyright © 2017-2018 larger5
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,88 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Index</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+        <style type="text/css">
+            body {
+                padding: 20px;
+            }
+        </style>
+        <script>
+            $(document).ready(function () {
+                $("#write").click(function () {
+                    $("#center").load("/Teacher/Form");
+                });
+                $("#done").click(function () {
+                    $("#center").load("/Teacher/Done");
+                });
+                $("#submitted").click(function () {
+                    $("#center").load("/Teacher/Submitted");
+                });
+            });
+        </script>
+
+    </head>
+    
+
+    <body>
+        
+        <div class="container">
+            <div>
+                <img src="~/Images/logo3.jpg" />
+            </div>
+            
+            <div class="row">
+                <div class="col-md-12">
+                    
+                </div>
+            </div>
+            
+            <div style="padding-top: 5px">
+                <div class="col-md-3">
+                    <div class="list-group">
+                        <!--激活，作为标题-->
+                        <a href="#" class="list-group-item active ">
+                            系统菜单
+                        </a>
+                        <a id="write" class="list-group-item">写提案</a>
+                        <a id="done" class="list-group-item">已提交的提案</a>
+                        <a id="submitted" class="list-group-item">已处理的提案</a>
+                        <a href="http://localhost:1700" class="list-group-item">退出登录</a>
+                    </div>
+                </div>
+            
+                <div class="col-md-9">
+                    <div>
+                        <ol class="breadcrumb">
+                            <li><span class="glyphicon glyphicon-home"></span>&nbsp;
+                                <a href="/Teacher/Index">主页</a>
+                            </li>
+                            <li class="active"></li>
+                        </ol>
+                    </div>
+                    <div id="center">
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="text-center" style="padding-top: 200px">
+                        Copyright © 2017-2018 lixue
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>

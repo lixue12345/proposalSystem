@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>@ViewBag.Title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+        <style type="text/css">
+        body {
+            padding: 20px;
+        }
+
+    </style>
+
+
+    </head>
+    
+
+    <body>
+        
+        <div class="container">
+            <div><img src="~/Images/logo43.jpg" /></div>
+            
+            <div class="row">
+                <div class="col-md-12">
+                    
+                </div>
+            </div>
+            
+            <div style="padding-top: 5px">
+                <div class="col-md-3">
+                    <div class="list-group">
+                        <!--激活，作为标题-->
+                        <a href="#" class="list-group-item active ">
+                            系统菜单
+                        </a>
+                        @Html.ActionLink("写提案","Form")
+                        <a href="#" class="list-group-item">管理二</a>
+                        <a href="#" class="list-group-item">管理三</a>
+                        <a href="#" class="list-group-item">管理四</a>
+                        <a href="#" class="list-group-item">退出</a>
+                    </div>
+                </div>
+            
+                <div class="col-md-9">
+                    <div>
+                        <ol class="breadcrumb">
+                            <li><span class="glyphicon glyphicon-home"></span>&nbsp;
+                                <a href="/Teacher/Index">主页</a>
+                            </li>
+                            <li class="active"></li>
+                        </ol>
+                    </div>
+                    <div id="center">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="text-center" style="padding-top: 200px">
+                        Copyright © 2017-2018 larger5
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>

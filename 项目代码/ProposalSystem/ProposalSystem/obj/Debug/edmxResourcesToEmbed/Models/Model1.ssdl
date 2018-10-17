@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProposalSystemModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ProposalSystemModelStoreContainer">
+    <EntitySet Name="Department" EntityType="ProposalSystemModel.Store.Department" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FeedBack" EntityType="ProposalSystemModel.Store.FeedBack" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Proposal" EntityType="ProposalSystemModel.Store.Proposal" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProposalType" EntityType="ProposalSystemModel.Store.ProposalType" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Result" EntityType="ProposalSystemModel.Store.Result" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="User" EntityType="ProposalSystemModel.Store.User" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserType" EntityType="ProposalSystemModel.Store.UserType" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_FeedBack_Result" Association="ProposalSystemModel.Store.FK_FeedBack_Result">
+      <End Role="Result" EntitySet="Result" />
+      <End Role="FeedBack" EntitySet="FeedBack" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Proposal_Department" Association="ProposalSystemModel.Store.FK_Proposal_Department">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="Proposal" EntitySet="Proposal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Proposal_ProposalType" Association="ProposalSystemModel.Store.FK_Proposal_ProposalType">
+      <End Role="ProposalType" EntitySet="ProposalType" />
+      <End Role="Proposal" EntitySet="Proposal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Proposal_User" Association="ProposalSystemModel.Store.FK_Proposal_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Proposal" EntitySet="Proposal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Result_Department" Association="ProposalSystemModel.Store.FK_Result_Department">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="Result" EntitySet="Result" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Result_Proposal" Association="ProposalSystemModel.Store.FK_Result_Proposal">
+      <End Role="Proposal" EntitySet="Proposal" />
+      <End Role="Result" EntitySet="Result" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Department" Association="ProposalSystemModel.Store.FK_User_Department">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_UserType" Association="ProposalSystemModel.Store.FK_User_UserType">
+      <End Role="UserType" EntitySet="UserType" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="FeedBack">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Result" Type="int" Nullable="false" />
+    <Property Name="ProposerOpinion" Type="nvarchar" MaxLength="200" />
+    <Property Name="Date" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Proposal">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Content" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="MainProposer" Type="int" Nullable="false" />
+    <Property Name="Co-Proposers" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="ProcessingDepartment" Type="int" Nullable="false" />
+    <Property Name="File" Type="varchar" MaxLength="200" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProposalType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="nvarchar" Nullable="false" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="Result">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Proposal" Type="int" Nullable="false" />
+    <Property Name="Register" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="Instruction" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="Department" Type="int" />
+    <Property Name="result" Type="nvarchar" MaxLength="10" />
+    <Property Name="ExecutionContent" Type="nvarchar" MaxLength="200" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="Account" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="Password" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="Department" Type="int" Nullable="false" />
+    <Property Name="UserType" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="nvarchar" Nullable="false" MaxLength="10" />
+  </EntityType>
+  <Association Name="FK_FeedBack_Result">
+    <End Role="Result" Type="ProposalSystemModel.Store.Result" Multiplicity="1" />
+    <End Role="FeedBack" Type="ProposalSystemModel.Store.FeedBack" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Result">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FeedBack">
+        <PropertyRef Name="Result" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Proposal_Department">
+    <End Role="Department" Type="ProposalSystemModel.Store.Department" Multiplicity="1" />
+    <End Role="Proposal" Type="ProposalSystemModel.Store.Proposal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Proposal">
+        <PropertyRef Name="ProcessingDepartment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Proposal_ProposalType">
+    <End Role="ProposalType" Type="ProposalSystemModel.Store.ProposalType" Multiplicity="1" />
+    <End Role="Proposal" Type="ProposalSystemModel.Store.Proposal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProposalType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Proposal">
+        <PropertyRef Name="Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Proposal_User">
+    <End Role="User" Type="ProposalSystemModel.Store.User" Multiplicity="1" />
+    <End Role="Proposal" Type="ProposalSystemModel.Store.Proposal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Proposal">
+        <PropertyRef Name="MainProposer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Result_Department">
+    <End Role="Department" Type="ProposalSystemModel.Store.Department" Multiplicity="0..1" />
+    <End Role="Result" Type="ProposalSystemModel.Store.Result" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Result">
+        <PropertyRef Name="Department" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Result_Proposal">
+    <End Role="Proposal" Type="ProposalSystemModel.Store.Proposal" Multiplicity="1" />
+    <End Role="Result" Type="ProposalSystemModel.Store.Result" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proposal">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Result">
+        <PropertyRef Name="Proposal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Department">
+    <End Role="Department" Type="ProposalSystemModel.Store.Department" Multiplicity="1" />
+    <End Role="User" Type="ProposalSystemModel.Store.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="Department" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_UserType">
+    <End Role="UserType" Type="ProposalSystemModel.Store.UserType" Multiplicity="1" />
+    <End Role="User" Type="ProposalSystemModel.Store.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="UserType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

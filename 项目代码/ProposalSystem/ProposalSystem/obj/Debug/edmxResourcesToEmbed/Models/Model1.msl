@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ProposalSystemModelStoreContainer" CdmEntityContainer="ProposalSystemEntities">
+    <EntitySetMapping Name="Department">
+      <EntityTypeMapping TypeName="ProposalSystemModel.Department">
+        <MappingFragment StoreEntitySet="Department">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FeedBack">
+      <EntityTypeMapping TypeName="ProposalSystemModel.FeedBack">
+        <MappingFragment StoreEntitySet="FeedBack">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Result" ColumnName="Result" />
+          <ScalarProperty Name="ProposerOpinion" ColumnName="ProposerOpinion" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Proposal">
+      <EntityTypeMapping TypeName="ProposalSystemModel.Proposal">
+        <MappingFragment StoreEntitySet="Proposal">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="MainProposer" ColumnName="MainProposer" />
+          <ScalarProperty Name="Co_Proposers" ColumnName="Co-Proposers" />
+          <ScalarProperty Name="ProcessingDepartment" ColumnName="ProcessingDepartment" />
+          <ScalarProperty Name="File" ColumnName="File" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProposalType">
+      <EntityTypeMapping TypeName="ProposalSystemModel.ProposalType">
+        <MappingFragment StoreEntitySet="ProposalType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Result">
+      <EntityTypeMapping TypeName="ProposalSystemModel.Result">
+        <MappingFragment StoreEntitySet="Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Proposal" ColumnName="Proposal" />
+          <ScalarProperty Name="Register" ColumnName="Register" />
+          <ScalarProperty Name="Instruction" ColumnName="Instruction" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="result1" ColumnName="result" />
+          <ScalarProperty Name="ExecutionContent" ColumnName="ExecutionContent" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="ProposalSystemModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Account" ColumnName="Account" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserType">
+      <EntityTypeMapping TypeName="ProposalSystemModel.UserType">
+        <MappingFragment StoreEntitySet="UserType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
